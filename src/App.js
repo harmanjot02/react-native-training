@@ -66,7 +66,7 @@ function App() {
       alert("Invalid Id!")
       return true;
     }
-
+    
     setShowResolveBugPopUp(false)
     setBugResolveId(0)
   }
@@ -110,48 +110,60 @@ function App() {
       </div>
 
       {
-        showAddBugPopUp ? <div className='popUp'>
-          <span className='closePopUp' onClick={() => setShowAddBugPopUp(false)}>X</span>
-          <div className='popUpHeading'>
-            <h2>Add Bug</h2>
+        showAddBugPopUp ?
+        <>
+          <div className='popUpBack'></div>
+          <div className='popUp'>
+            <span className='closePopUp' onClick={() => setShowAddBugPopUp(false)}>X</span>
+            <div className='popUpHeading'>
+              <h2>Add Bug</h2>
+            </div>
+            <div className='popUpInputDiv'>
+              <input autoFocus={true} type='text' placeholder='Enter Bug Description' onChange={event => setBugDescription(event.target.value)} />
+            </div>
+            <div className='popUpSubmitBtn'>
+              <button onClick={addBug} children='SUBMIT' />
+            </div>
           </div>
-          <div className='popUpInputDiv'>
-            <input autoFocus={true} type='text' placeholder='Enter Bug Description' onChange={event => setBugDescription(event.target.value)} />
-          </div>
-          <div className='popUpSubmitBtn'>
-            <button onClick={addBug} children='SUBMIT' />
-          </div>
-        </div> : ''
+        </> : ''
       }
 
       {
-        showRemoveBugPopUp ? <div className='popUp'>
-          <span className='closePopUp' onClick={() => setShowRemoveBugPopUp(false)}>X</span>
-          <div className='popUpHeading'>
-            <h2>Remove Bug</h2>
+        showRemoveBugPopUp ?
+        <>
+          <div className='popUpBack'></div>
+          <div className='popUp'>
+            <span className='closePopUp' onClick={() => setShowRemoveBugPopUp(false)}>X</span>
+            <div className='popUpHeading'>
+              <h2>Remove Bug</h2>
+            </div>
+            <div className='popUpInputDiv'>
+              <input autoFocus={true} type='number' placeholder='Enter Bug Id' onChange={event => setBugRemoveId(event.target.value)} />
+            </div>
+            <div className='popUpSubmitBtn'>
+              <button onClick={removeBug} children='SUBMIT' />
+            </div>
           </div>
-          <div className='popUpInputDiv'>
-            <input type='number' placeholder='Enter Bug Id' onChange={event => setBugRemoveId(event.target.value)} />
-          </div>
-          <div className='popUpSubmitBtn'>
-            <button onClick={removeBug} children='SUBMIT' />
-          </div>
-        </div> : ''
+        </> : ''
       }
 
       {
-        showResolveBugPopUp ? <div className='popUp'>
-          <span className='closePopUp' onClick={() => setShowResolveBugPopUp(false)}>X</span>
-          <div className='popUpHeading'>
-            <h2>Resolve Bug</h2>
+        showResolveBugPopUp ? 
+        <>
+          <div className='popUpBack'></div>
+          <div className='popUp'>
+            <span className='closePopUp' onClick={() => setShowResolveBugPopUp(false)}>X</span>
+            <div className='popUpHeading'>
+              <h2>Resolve Bug</h2>
+            </div>
+            <div className='popUpInputDiv'>
+              <input autoFocus={true} type='number' placeholder='Enter Bug Id' onChange={event => setBugResolveId(event.target.value)} />
+            </div>
+            <div className='popUpSubmitBtn'>
+              <button onClick={resolveBug} children='SUBMIT' />
+            </div>
           </div>
-          <div className='popUpInputDiv'>
-            <input type='number' placeholder='Enter Bug Id' onChange={event => setBugResolveId(event.target.value)} />
-          </div>
-          <div className='popUpSubmitBtn'>
-            <button onClick={resolveBug} children='SUBMIT' />
-          </div>
-        </div> : ''
+        </> : ''
       }
 
     </div>
